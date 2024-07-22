@@ -29,10 +29,9 @@ sudo systemctl restart nginx # reinicia ngnix, si no lo tenes da error
 '
 
 # Al clonar el repositorio
-:'
 cd inmo
 
-### si falta la carpeta vendor
+### si falta la carpeta vendor en algun momento podes correr solamente el proximo comando.
 docker run --rm \
     -u "$(id -u):$(id -g)" \
     -v "$(pwd):/var/www/html" \
@@ -42,10 +41,8 @@ docker run --rm \
 
 ################################### correr solo si tira error las proximas lineas
 #sail build --no-cache
+#./vendor/bin/sail composer install
 ###################################
 
-./vendor/bin/sail composer install
 ./vendor/bin/sail up -d
-
 ./vendor/bin/sail artisan migrate
-'
